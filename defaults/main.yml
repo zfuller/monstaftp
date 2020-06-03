@@ -1,0 +1,31 @@
+---
+monstaftp_version: 2.10.1
+monstaftp_filename: monsta_ftp_{{ monstaftp_version }}_install.zip
+monstaftp_file_src: https://www.monstaftp.com/downloads/{{ monstaftp_filename }}
+
+monstaftp_configPathSettings: "settings.json"
+monstaftp_configTimeZone: "UTC"
+monstaftp_configTempDir: ""
+monstaftp_configMaxFileSize: "1024M"
+monstaftp_configChunkUploadSize: "default"
+monstaftp_configMaxExecutionTimeSeconds: 1800
+monstaftp_configSSHAgentAuthEnabled: false
+monstaftp_configSSHKeyAuthEnabled: false
+monstaftp_configPageTitle: "Monsta FTP"
+
+monstaftp_configMaxLoginFailures: 3
+monstaftp_configLoginFailuresResetTimeMinutes: 5
+
+monstaftp_configMftpActionLogPath: 'null'
+monstaftp_configMftpActionLogFunction: 'null'
+
+monstaftp_configLogToSyslog: false
+monstaftp_configMftpSyslogFacility: "LOG_USER"
+
+monstaftp_configLogToFile: false
+monstaftp_configMftpLogFilePath: 'null'
+monstaftp_configMftpLogLevelThreshold: "LOG_WARNING"
+monstaftp_configDisableLatestVersionCheck: false
+
+monstaftp_configPathProfiles:
+monstaftp_configPathLicense:
