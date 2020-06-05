@@ -1,38 +1,39 @@
 ---
 - name: monstaftp | find existing installation
   stat:
-    path: /usr/share/monstaftp/mftp
+    path: "{{ monstaftp_install_location }}"
   register: monstaftp_installation
 
-- name: monstaftp | ensure /usr/share/monstaftp
+- name: monstaftp | ensure {{ monstaftp_location }}
   file:
-    dest: /usr/share/monstaftp
+    dest: "{{ monstaftp_location }}"
     state: directory
-    owner: www-data
-    group: www-data
+    owner: "{{ monstaftp_owner }}"
+    group: "{{ monstaftp_group }}"
 
 - name: monstaftp | Extracting Monstaftp
   unarchive:
     src: "{{ monstaftp_file_src }}"
-    dest: /usr/share/monstaftp
-    owner: www-data
-    group: www-data
-  when: monstaftp_installation.isdir is not defined
+    remote_src: "{{ monstaftp_file_src_remote }}"
+    dest: "{{ monstaftp_location }}"
+    owner: "{{ monstaftp_owner }}"
+    group: "{{ monstaftp_group }}"
+  when: monstaftp_installation.stat.isdir|bool == false
 
 - name: monstaftp | settings | config.php
   template:
     src: templates/usr/share/monstaftp/mftp/settings/config.php.j2
-    dest: "/usr/share/monstaftp/mftp/settings/config.php"
-    owner: www-data
-    group: www-data
+    dest: "{{ monstaftp_install_location }}/settings/config.php"
+    owner: "{{ monstaftp_owner }}"
+    group: "{{ monstaftp_group }}"
     mode: "0644"
 
 - name: monstaftp | license | config_pro.php
   template:
     src: templates/usr/share/monstaftp/mftp/license/config_pro.php.j2
-    dest: "/usr/share/monstaftp/mftp/license/config_pro.php"
-    owner: www-data
-    group: www-data
+    dest: "{{ monstaftp_install_location }}/license/config_pro.php"
+    owner: "{{ monstaftp_owner }}"
+    group: "{{ monstaftp_group }}"
     mode: "0644"
   when:
     - monstaftp_configPathLicense is defined
