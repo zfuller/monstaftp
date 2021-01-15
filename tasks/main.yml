@@ -18,7 +18,9 @@
     dest: "{{ monstaftp_location }}"
     owner: "{{ monstaftp_owner }}"
     group: "{{ monstaftp_group }}"
-  when: monstaftp_installation.stat.isdir|bool == false
+  when:
+    - not monstaftp_installation.stat.exists or
+      (monstaftp_installation.stat.isdir is defined and not monstaftp_installation.stat.isdir)
 
 - name: monstaftp | settings | config.php
   template:
