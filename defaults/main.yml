@@ -1,5 +1,5 @@
 ---
-monstaftp_version: 2.10.2
+monstaftp_version: 2.10.3
 monstaftp_filename: monsta_ftp_{{ monstaftp_version }}_install.zip
 monstaftp_file_src: https://www.monstaftp.com/downloads/{{ monstaftp_filename }}
 monstaftp_file_src_remote: 'yes'
